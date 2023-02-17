@@ -1,12 +1,22 @@
 const express = require('express');
 const app = express();
-//const mysql2 = require('mysql2');
+const mysql2 = require('mysql2');
 const myconn = require('express-myconnection');
 const routerEmpleados = require('./src/routes/empleados')
 const cors = require('cors')
 
+const dbOptions = {
+    host: process.env.DB_HOST ||'localhost',
+    port: process.env.DB_PORT || 3306,
+    user: process.env.DB_USER || 'root',
+    password: process.env.DB_PASSWORD || '123456',
+    database: process.env.DB_NAME || 'lista_empleados'
+}
+
 
 //MIDDLEWARES
+//db
+app.use(myconn(mysql2, dbOptions, 'single'))
 
 //Ruta
 app.use('/api/empleados', routerEmpleados)
