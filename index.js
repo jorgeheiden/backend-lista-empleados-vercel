@@ -5,6 +5,7 @@ const myconn = require('express-myconnection');
 const routerEmpleados = require('./src/routes/empleados')
 const cors = require('cors')
 
+
 const dbOptions = {
     host: process.env.DB_HOST ||'localhost',
     port: process.env.DB_PORT || 3306,
@@ -12,6 +13,7 @@ const dbOptions = {
     password: process.env.DB_PASSWORD || '123456',
     database: process.env.DB_NAME || 'lista_empleados'
 }
+
 
 
 //MIDDLEWARES
@@ -23,6 +25,8 @@ app.use('/api/empleados', routerEmpleados)
 
 app.use(express.json())
 
+const whiteList = ['http://localhost:4200', 'https://lista-de-empleados-69bab.web.app']
+app.use(cors({ origin: whiteList}))
 
 app.set('port', process.env.PORT || 3000)
 
