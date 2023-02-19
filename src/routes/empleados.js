@@ -17,6 +17,7 @@ routerEmpleados.get('/', (req, res) => {
     })
 })
 
+
 routerEmpleados.post('/', (req, res) =>{
     req.getConnection( (err, connection) =>{
         if(err) return res.send(err)
@@ -28,6 +29,7 @@ routerEmpleados.post('/', (req, res) =>{
         })
     })
 })
+
 
 routerEmpleados.delete('/:id', (req, res) =>{
     req.getConnection( (err, connection) =>{

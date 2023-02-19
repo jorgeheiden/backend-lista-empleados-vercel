@@ -11,7 +11,7 @@ const dbOptions = {
     port: process.env.DB_PORT || 3306,
     user: process.env.DB_USER || 'root',
     password: process.env.DB_PASSWORD || '123456',
-    database: process.env.DB_NAME || 'lista_empleados'
+    database: process.env.DB_NAME || 'lista_empleados',
 }
 
 
@@ -20,12 +20,13 @@ const dbOptions = {
 //db
 app.use(myconn(mysql2, dbOptions, 'single'))
 
+app.use(express.json())
+
 //Ruta
 app.use('/api/empleados', routerEmpleados)
 
-app.use(express.json())
 
-const whiteList = ['http://localhost:4200', 'https://lista-de-empleados-69bab.web.app']
+const whiteList = ['http://localhost:4200', 'https://lista-de-empleados-69bab.web.app'] 
 app.use(cors({ origin: whiteList}))
 
 app.set('port', process.env.PORT || 3000)
