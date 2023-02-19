@@ -27,7 +27,7 @@ app.use('/api/empleados', routerEmpleados)
 
 
 const whiteList = ['http://localhost:4200', 'https://lista-de-empleados-69bab.web.app'] 
-app.use(cors({ origin: whiteList}))
+app.use(cors({ origin: whiteList, credentials: true}))
 
 app.set('port', process.env.PORT || 3000)
 
