@@ -19,7 +19,7 @@
           "continue": true
         },
         {
-          "src": "/user/login", "methods": ["POST"], "dest": "index.js"
+          "src": "/user/login", "methods": ["POST", "DELETE"], "dest": "index.js"
         }
       ]
  
